@@ -5,6 +5,7 @@ Ported from the previous Vite + React Router site (`hardcraft-suite`), keeping i
 
 ## Getting started
 
+
 ```sh
 npm install
 cp .env.example .env.local   # fill in the values
