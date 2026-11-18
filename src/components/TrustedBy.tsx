@@ -8,7 +8,6 @@ const logos: Logo[] = [
   { src: "/company-logos/marquee/safeguardair.png", alt: "SafeGuard Air" },
   { src: "/company-logos/marquee/vitalscarepro.png", alt: "Vitals Care Pro" },
   { src: "/company-logos/marquee/nrtech.png", alt: "NR Techcreatz" },
-  { src: "/company-logos/marquee/flostat.png", alt: "Flostat", label: "FLOSTAT" },
   { src: "/company-logos/marquee/dreambot.png", alt: "Dreambot" },
   { src: "/company-logos/marquee/everypin.png", alt: "Everypin" },
   { src: "/company-logos/marquee/spotmies.png", alt: "Spotmies" },

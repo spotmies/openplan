@@ -35,7 +35,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "How much does OpenPlan cost?",
-    a: "There is a free plan for up to 5 users. Pro is $24 per user per month, or $20 when billed yearly, with unlimited users, BOMs and ECOs. Enterprise is priced on an annual agreement and adds advanced access controls, custom SLAs, private deployments and data residency.",
+    a: "OpenPlan is priced per active project per month, with AI, storage and users included. Free covers 1 active project and 5 users. Starter is $49 per project per month and Pro is $79, billed yearly ($59 and $95 billed monthly). Enterprise is priced with our team on an annual agreement and adds SAML and SCIM, a 99.9% uptime SLA, a named CSM and data residency options. See the pricing page for the full comparison.",
   },
   {
     q: "How does OpenPlan keep our product data secure?",
