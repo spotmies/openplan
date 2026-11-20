@@ -15,6 +15,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { CheckCircle, Zap, Shield, Users } from "lucide-react";
+import { LIMITS, stripMarkup } from "@/lib/sanitize";
 import { submitToGoogleSheets, fetchWaitlistCount } from "@/lib/googleSheets";
 import CaptchaField from "@/components/CaptchaField";
 import CalendlyEmbed from "@/components/CalendlyEmbed";
@@ -125,7 +126,7 @@ const Waitlist = () => {
     const nextValue =
       field === "mobile"
         ? value.replace(/[^\d+\s()-]/g, "").replace(/(?!^)\+/g, "")
-        : value;
+        : stripMarkup(value);
 
     setFormData((prev) => ({ ...prev, [field]: nextValue }));
     if (errors[field]) {
@@ -248,6 +249,7 @@ const Waitlist = () => {
                       <Label htmlFor="name">Full Name *</Label>
                       <Input
                         id="name"
+                    maxLength={LIMITS.name}
                         type="text"
                         placeholder="Enter your full name"
                         value={formData.name}
@@ -262,6 +264,7 @@ const Waitlist = () => {
                       <Label htmlFor="email">Email Address *</Label>
                       <Input
                         id="email"
+                    maxLength={LIMITS.email}
                         type="email"
                         placeholder="Enter your email address"
                         value={formData.email}
@@ -293,6 +296,7 @@ const Waitlist = () => {
                       <Label htmlFor="company">Company Name *</Label>
                       <Input
                         id="company"
+                    maxLength={LIMITS.company}
                         type="text"
                         placeholder="Enter your company name"
                         value={formData.company}
@@ -338,6 +342,7 @@ const Waitlist = () => {
                     <Label htmlFor="message">Additional Message (Optional)</Label>
                     <Textarea
                       id="message"
+                    maxLength={LIMITS.message}
                       placeholder="Tell us more about your needs or any questions you have..."
                       value={formData.message}
                       onChange={(e) => handleInputChange("message", e.target.value)}

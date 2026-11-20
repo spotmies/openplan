@@ -1,3 +1,5 @@
+import { sanitizeForSubmit } from "@/lib/sanitize";
+
 type FormType = "waitlist" | "demo";
 
 const getGoogleSheetsEndpoint = (formType: FormType): string => {
@@ -68,7 +70,12 @@ export const submitToGoogleSheets = async <T extends object>(
       body: JSON.stringify({
         formType,
         submittedAt: new Date().toISOString(),
-        ...payload,
+        ...Object.fromEntries(
+          Object.entries(payload).map(([key, value]) => [
+            key,
+            typeof value === "string" && key !== "captchaToken" ? sanitizeForSubmit(value) : value,
+          ]),
+        ),
       }),
     });
   } catch (error) {

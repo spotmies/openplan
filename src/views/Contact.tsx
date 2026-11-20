@@ -17,9 +17,18 @@ import { MapPin, Mail, Phone, Clock, ExternalLink, CheckCircle } from "lucide-re
 import React, { useState } from "react";
 import { submitToGoogleSheets } from "@/lib/googleSheets";
 import CaptchaField from "@/components/CaptchaField";
+import { LIMITS, stripMarkup } from "@/lib/sanitize";
 import CalendlyEmbed from "@/components/CalendlyEmbed";
 
 const CALENDLY_URL = "https://calendly.com/sekhar-javvadi/introduction-meeting";
+
+const SUBJECTS = [
+  { value: "general", label: "General Inquiry" },
+  { value: "sales", label: "Sales" },
+  { value: "support", label: "Technical Support" },
+  { value: "partnership", label: "Partnership" },
+  { value: "careers", label: "Careers" },
+];
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -49,7 +58,7 @@ const Contact = () => {
       await submitToGoogleSheets("demo", {
         name,
         email,
-        subject,
+        subject: SUBJECTS.find((s) => s.value === subject)?.label ?? subject,
         message,
         captchaToken,
       });
@@ -91,12 +100,6 @@ const Contact = () => {
             <p className="mt-2 text-sm sm:text-base text-muted-foreground">
               Have questions, need support, or interested in partnerships? We'd love to hear from you. Our team typically responds within 1–2 business days.
             </p>
-            <p className="mt-2 text-xs sm:text-sm text-muted-foreground">
-              <strong>We usually respond within 24–48 hours.</strong>
-            </p>
-            <p className="mt-4 text-xs sm:text-sm text-muted-foreground/80 italic">
-              Trusted by teams building modern hardware products.
-            </p>
           </div>
 
           <div className="mt-10 grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -109,13 +112,9 @@ const Contact = () => {
                 <div>
                   <p className="text-sm sm:text-base font-medium">Registered Office : {/* Spotmies LLP */}Velmond Labs Private Limited</p>
                   <p className="text-xs sm:text-sm text-muted-foreground">
-                    Lawsonbay Colony
+                    Lawsonbay Colony, MVP Sector 11
                     <br />
-                    MVP Sector 11
-                    <br />
-                    Visakhapatnam
-                    <br />
-                    Andhra Pradesh, India
+                    Visakhapatnam, Andhra Pradesh, India
                   </p>
                 </div>
               </div>
@@ -211,7 +210,8 @@ const Contact = () => {
                         id="name"
                         placeholder="Jane Cooper"
                         value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        onChange={(e) => setName(stripMarkup(e.target.value))}
+                        maxLength={LIMITS.name}
                         disabled={isSubmitting}
                         required
                         className="focus:ring-2 focus:ring-ring"
@@ -224,7 +224,8 @@ const Contact = () => {
                         type="email"
                         placeholder="jane@company.com"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={(e) => setEmail(stripMarkup(e.target.value))}
+                        maxLength={LIMITS.email}
                         disabled={isSubmitting}
                         required
                         className="focus:ring-2 focus:ring-ring"
@@ -245,11 +246,11 @@ const Contact = () => {
                           <SelectValue placeholder="Select a subject" />
                         </SelectTrigger>
                         <SelectContent className="z-[100] border-white/10 bg-[#111113] text-white shadow-[0_12px_32px_rgba(0,0,0,0.6)]">
-                          <SelectItem value="general">General Inquiry</SelectItem>
-                          <SelectItem value="sales">Sales</SelectItem>
-                          <SelectItem value="support">Technical Support</SelectItem>
-                          <SelectItem value="partnership">Partnership</SelectItem>
-                          <SelectItem value="careers">Careers</SelectItem>
+                          {SUBJECTS.map((o) => (
+                            <SelectItem key={o.value} value={o.value}>
+                              {o.label}
+                            </SelectItem>
+                          ))}
                         </SelectContent>
                       </Select>
                     </div>
@@ -260,7 +261,8 @@ const Contact = () => {
                         placeholder="Tell us a bit more about what you need…"
                         rows={6}
                         value={message}
-                        onChange={(e) => setMessage(e.target.value)}
+                        onChange={(e) => setMessage(stripMarkup(e.target.value))}
+                        maxLength={LIMITS.message}
                         disabled={isSubmitting}
                         required
                         className="focus:ring-2 focus:ring-ring resize-none"

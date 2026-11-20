@@ -21,7 +21,7 @@ const GA_ID = "G-8Z892GP5SK";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://openplan.ai"),
-  title: "OpenPlan - Modern Ops for Hardware SaaS",
+  title: "OpenPlan - AI-Powered ops platform for modern hardware teams",
   description:
     "Streamline hardware development with our comprehensive SaaS platform. Project management, inventory tracking, compliance, and more for automotive, aerospace, pharma, and media companies.",
   authors: [{ name: "OpenPlan" }],
@@ -60,7 +60,9 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${sans.variable} ${mono.variable}`} suppressHydrationWarning>
+    // data-scroll-behavior="smooth": keep CSS smooth scrolling for in-page links, but let Next.js
+    // jump instantly to the top on route changes (Next 16 no longer does this by default).
+    <html lang="en" data-scroll-behavior="smooth" className={`${sans.variable} ${mono.variable}`} suppressHydrationWarning>
       <body>
         <Providers>{children}</Providers>
         <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />

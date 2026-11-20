@@ -2,7 +2,7 @@
 
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Book, Code, Rocket, Settings, FileText, HelpCircle, ExternalLink } from "lucide-react";
+import { Book, Code, Rocket, Settings, FileText, HelpCircle, ExternalLink, Search } from "lucide-react";
 import Link from "next/link";
 
 const Docs = () => {
@@ -81,25 +81,23 @@ const Docs = () => {
 
       <main className="flex-1">
         <section className="container mx-auto sm:px-12 px-4 pt-28 pb-16">
-          {/* Header */}
-          <div className="max-w-3xl mb-12">
-            <h1 className="text-3xl md:text-4xl font-semibold">Documentation</h1>
-            <p className="mt-3 text-muted-foreground text-lg">
-              Everything you need to know about OpenPlan. From getting started to advanced features, find all the information you need here.
-            </p>
-          </div>
+          {/* Header: title + intro on the left, search beside the title on larger screens */}
+          <div className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between lg:gap-10">
+            <div className="max-w-3xl">
+              <h1 className="text-3xl md:text-4xl font-semibold">Documentation</h1>
+              <p className="mt-3 text-muted-foreground text-lg">
+                Everything you need to know about OpenPlan. From getting started to advanced features, find all the information you need here.
+              </p>
+            </div>
 
-          {/* Search Bar */}
-          <div className="max-w-2xl mb-12">
-            <div className="relative">
+            <div className="relative w-full lg:mt-1 lg:w-[22rem] lg:shrink-0">
               <input
                 type="text"
                 placeholder="Search documentation..."
-                className="w-full h-12 px-4 rounded-lg border border-border/60 bg-card/40 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                aria-label="Search documentation"
+                className="w-full h-12 pl-4 pr-11 rounded-lg border border-border/60 bg-card/40 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
               />
-              <kbd className="absolute right-4 top-1/2 -translate-y-1/2 px-2 py-1 text-xs text-muted-foreground bg-muted rounded">
-                ⌘K
-              </kbd>
+              <Search aria-hidden className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             </div>
           </div>
 
