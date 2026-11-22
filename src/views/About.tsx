@@ -160,12 +160,12 @@ const About = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
               {[
                 {
-                  name: "Sekhar Javvadi",
+                  name: "Raja Sekhar",
                   role: "CEO & Co-Founder",
                   initials: "SJ",
                   photo: "/team/sekhar.jpg",
-                  // bio: "Sekhar Javvadi is a technology entrepreneur with 5+ years of experience building AI-driven applications, scalable platforms, and IoT solutions. He founded OpenPlan after years of shipping hardware for clients at Spotmies, where fragmented tools and spreadsheets kept slowing teams down. As CEO, he leads OpenPlan's product vision and engineering, focused on giving hardware teams one unified platform for planning, BOM, sourcing, builds, and quality.",
-                  bio: "Sekhar Javvadi is a technology entrepreneur with 5+ years of experience building AI-driven applications, scalable platforms, and IoT solutions. He founded OpenPlan after years of shipping hardware for clients at Velmond Labs Private Limited, where fragmented tools and spreadsheets kept slowing teams down. As CEO, he leads OpenPlan's product vision and engineering, focused on giving hardware teams one unified platform for planning, BOM, sourcing, builds, and quality.",
+                  // bio: "Raja Sekhar is a technology entrepreneur with 5+ years of experience building AI-driven applications, scalable platforms, and IoT solutions. He founded OpenPlan after years of shipping hardware for clients at Spotmies, where fragmented tools and spreadsheets kept slowing teams down. As CEO, he leads OpenPlan's product vision and engineering, focused on giving hardware teams one unified platform for planning, BOM, sourcing, builds, and quality.",
+                  bio: "Raja Sekhar is a technology entrepreneur with 5+ years of experience building AI-driven applications, scalable platforms, and IoT solutions. He founded OpenPlan after years of shipping hardware for clients at Velmond Labs Private Limited, where fragmented tools and spreadsheets kept slowing teams down. As CEO, he leads OpenPlan's product vision and engineering, focused on giving hardware teams one unified platform for planning, BOM, sourcing, builds, and quality.",
                 },
                 {
                   name: "Satish",
